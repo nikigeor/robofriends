@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CardList from './CardList';
-import SearchBox from './SearchBox';
+import CardList from './components/CardList';
+import SearchBox from './components/SearchBox';
 import { robots } from './robots';
 import './App.css';
 
@@ -12,6 +12,12 @@ class App extends Component {
             searchfield: ''
         }
      }
+
+		 componentDidMount() {
+			 fetch('https://jsonplaceholder.typicode.com/users')
+			 	.then(response=> response.json())
+				.then(users => {this.setState({ robots: users })});
+		 }
     
  //Searchbox (type the name you want) 
  //onSearchChange lets the server know there is a change   
